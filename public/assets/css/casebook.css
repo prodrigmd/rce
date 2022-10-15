@@ -1,0 +1,19 @@
+.bluedot {
+    height: 15px;
+    width: 15px;
+    background-color: #0b5ed7;
+    border-radius: 50%;
+    display: inline-block;
+    order: 1;
+    z-index: -1;
+}
+
+.reddot {
+    height: 15px;
+    width: 15px;
+    background-color: #a52834;
+    border-radius: 50%;
+    display: inline-block;
+    order: 2;
+    z-index: 2;
+}

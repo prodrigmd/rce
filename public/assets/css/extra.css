@@ -1,0 +1,195 @@
+/* CSS Document */
+.azul{
+	background-color: #3278B7;
+}
+.verde{
+	background-color: #14A650;
+}
+body{
+	/* background-color: #1F1F1F !important;
+        color: #D2D2D2 !important; */
+    background-color: #2e2e2e !important;
+    color: #f5f5f5 !important;
+}
+
+.fnegra{
+        color: black !important;
+}
+.container{
+       font-size: 12px !important;
+}
+.container{
+    background-color: #494949 !important;
+    color: #202124 !important;
+}
+
+.control-label
+{
+    height:20px;
+    font-size:10px;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
+    padding-right: 0px;
+    margin-right: -10px;
+    margin-top: -5px !important;
+    margin-bottom: -10px !important;
+}
+input[type="text"]
+{
+    font-size:10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+}
+input[type="email"]
+{
+   font-size:10px;
+    padding-top: 0px;
+    padding-bottom: 0px;;
+}
+input[type="password"]
+{
+    font-size:10px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+.inputfield{
+    height:20px;
+    margin-left: 0px;
+    margin-top: -5px;
+    margin-bottom: -10px !important;
+
+  }
+
+.footer_height{
+    min-height: 250px;
+}
+
+.oculto{
+	display:none;
+        height:15px;
+        font-size:10px;
+        width: 300px;
+    margin-top: -5px;
+    margin-bottom: 10px !important;
+    padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+/* .navbar {
+  min-height: 80px;
+}*/
+
+.nav{
+padding-bottom: 0px !important;
+padding-top: 50px;
+padding-right: 15px;
+padding-left: 15px;
+margin-bottom: -15px;
+margin-top: 0px;
+
+}
+
+.navbar-brand {
+padding-bottom: 0px !important;
+padding-top: 0px;
+padding-right: 15px;
+padding-left: 15px;
+margin-bottom: 0px !important;
+margin-top: 0px;
+}
+
+.navbar-text{
+padding-bottom: 0px !important;
+padding-top: 67px;
+padding-right: 15px;
+padding-left: 15px;
+margin-bottom: 0px !important;
+margin-top: 0px;
+color: #202124 !important;
+
+}
+hr {
+    display: block;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    border-style: inset;
+    border-width: 1px;
+}
+  /*-- change navbar dropdown color --*/
+.dropdown-menu>li, .dropdown-menu {
+  	background-color: #393939;
+    color:#f5f5f5;
+    font-size: 12px;
+  }
+.dropdown-menu>li>a, .dropdown-menu {
+    background-color: #393939;
+    color:#f5f5f5;
+    font-size: 12px;
+}
+
+
+.dropdown-toggle{
+   /* color: #202124 !important; */
+    color: #f5f5f5 !important;
+}
+
+.navbar-nav>li>a:visited {
+    background-color: #393939 !important;
+    color: #f5f5f5 !important;
+}
+
+.nav>li>a:visited {
+    background-color: #393939 !important;
+    color: #f5f5f5 !important;
+}
+.nav>li>a:hover {
+    background-color: #393939 !important;
+    color: #f5f5f5 !important;
+}
+
+.nav>li>a:active {
+    background-color: #393939 !important;
+    color: #f5f5f5 !important;
+}
+
+.nav>li>a:link {
+    background-color: transparent !important;
+    color: #f5f5f5 !important;
+}
+
+
+  .breadcrumb {
+      background-color: #676767;
+    color:#D2D2D2;
+  }
+
+  .collapse .navbar-collapse > li >a{
+      min-height: 100px !important;
+
+  }
+
+.ScrollStyle
+{
+    width:auto;
+    overflow-y: auto;
+    height: 60px;
+    overflow-x: hidden;
+}
+
+body {
+    padding-top: 80px;
+    /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+
+}
+
+div.sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+
+
