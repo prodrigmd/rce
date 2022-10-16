@@ -47,8 +47,8 @@
                                 [patientAddress], [patientCity], [date], [description], [email],
                                 [surgeonName], [surgeonRUT], [surgeonSpecialty], [anesthesiaName], [arsenaleraName],
                                 [surgeryTime], [diagnosis], [history], [surgeriesList], [surgeriesDetail],
-                                [surgeriesPosition], [thromboticRisk], [paseMatronaYN], [justification], [supplies],
-                                [equipment], [consignaciones], [ambulatorioYN], [diasHosp], [delayRiskYN]. <br>
+                                [surgeriesPosition], [thromboticRiskBMA], [Interconsulta], [paseMatronaYN], [supplies],
+                                [equipment], [consignaciones], [bloodProducts], [ambulatorioYN], [diasHosp], [delayRiskYN]. <br>
                                 <b>Grupos derivados: </b> [date-d], [date-m], [date-Y], [date-d-m-Y], [date-H:i],
                                 [dateSurgery-d-m-Y], [dateSurgery-H:i], [surgeonName-1], [anesthesist-YN],
                                 [arsenalera-YN]<br>

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Update10DocumentsTable extends Migration
+class Update11DocumentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,9 +14,7 @@ class Update10DocumentsTable extends Migration
     public function up()
     {
         Schema::table('documents', function (Blueprint $table) {
-//            $table->renameColumn('diasMQ', 'diasHosp');
-            $table->dropColumn(['diasUTI','diasUCI','diasTotal']);
-//            $table->renameColumn('description')->nullable()->change();
+            $table->dropColumn('justification');
         });
     }
 

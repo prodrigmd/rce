@@ -235,6 +235,49 @@ class RecetaController extends Controller
             }
         }
 
+        if (isset($myArray['paseMatronaYN'])) {
+            $paseMatronaTemp = comma_separated_to_array($myArray['paseMatronaYN'][0], '/XY:');
+            $arrayCoordTemp = comma_separated_to_array($paseMatronaTemp[1], '|');
+            $myArray['paseMatronaYN'][0] = 'X';
+            if ($document[0]->paseMatronaYN == 'NULL') {
+                $myArray['paseMatronaYN'][0] = NULL;
+            }
+            elseif ($document[0]->paseMatronaYN == 'N') {
+                $myArray['paseMatronaYN'][1] = $myArray['paseMatronaYN'][1] + $arrayCoordTemp[0] ;
+                $myArray['paseMatronaYN'][2] = $myArray['paseMatronaYN'][2] + $arrayCoordTemp[1];
+            }
+        }
+
+        if (isset($myArray['ambulatorioYN'])) {
+            $ambulatorioTemp = comma_separated_to_array($myArray['ambulatorioYN'][0], '/XY:');
+            $arrayCoordTemp = comma_separated_to_array($ambulatorioTemp[1], '|');
+            $myArray['ambulatorioYN'][0] = 'X';
+            if ($document[0]->ambulatorioYN == 'NULL') {
+                $myArray['ambulatorioYN'][0] = NULL;
+            }
+            elseif ($document[0]->ambulatorioYN == 'N') {
+                $myArray['ambulatorioYN'][1] = $myArray['ambulatorioYN'][1] + $arrayCoordTemp[0] ;
+                $myArray['ambulatorioYN'][2] = $myArray['ambulatorioYN'][2] + $arrayCoordTemp[1];
+            }
+        }
+
+        if (isset($myArray['thromboticRiskBMA'])) {
+            $thromboticRiskBMATemp = comma_separated_to_array($myArray['thromboticRiskBMA'][0], '/XY:');
+            $arrayCoordTemp = comma_separated_to_array($thromboticRiskBMATemp[1], '|');
+            $myArray['thromboticRiskBMA'][0] = 'X';
+            if ($document[0]->thromboticRiskBMA == 'NULL') {
+                $myArray['thromboticRiskBMA'][0] = NULL;
+            }
+            elseif ($document[0]->thromboticRiskBMA == 'M') {
+                $myArray['thromboticRiskBMA'][1] = $myArray['thromboticRiskBMA'][1] + $arrayCoordTemp[0] ;
+                $myArray['thromboticRiskBMA'][2] = $myArray['thromboticRiskBMA'][2] + $arrayCoordTemp[1];
+            }
+            elseif ($document[0]->thromboticRiskBMA == 'A') {
+                $myArray['thromboticRiskBMA'][1] = $myArray['thromboticRiskBMA'][1] + ($arrayCoordTemp[0] *2) ;
+                $myArray['thromboticRiskBMA'][2] = $myArray['thromboticRiskBMA'][2] + ($arrayCoordTemp[1] *2);
+            }
+        }
+
         $size = $myArray['sizeAngleColor'][0];
         $angle = $myArray['sizeAngleColor'][1];
         $color = $myArray['sizeAngleColor'][2];

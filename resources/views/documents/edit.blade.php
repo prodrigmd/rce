@@ -26,8 +26,10 @@
                         @include('documents.partials.receta')
                     @elseif($myType[0] -> name == 'Interconsulta')
                         @include('documents.partials.interconsulta')
-                    @elseif($myType[0] -> shortName == 'SolicitudPab')
-                        @include('documents.partials.solicitudPab')
+                    @elseif($mySubtype[0] -> shortName == 'SolicitudPabNcc')
+                        @include('documents.partials.solicitudPabNcc')
+                    @elseif($mySubtype[0] -> shortName == 'SolicitudPab307Ncc')
+                        @include('documents.partials.SolicitudPab307Ncc')
                     @endif
                 </div>
                 <a href="{{ route('document.index') }}" class="btn btn-secondary">Volver</a>

@@ -162,6 +162,228 @@
 </div>
 <br>
 <div class="row">
+    <div class="col-sm-6">
+        <label for="diagnosis">Diagnóstico Quirúrgico</label>
+        <input class="form-control" value="{!! old('diagnosis') ?? ($editable[0]->diagnosis ?? '') !!}" name="diagnosis" type="text" id="diagnosis">
+        @error('diagnosis')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+    <div class="col-sm-6">
+        <label for="history">Antecedentes</label>
+        <input class="form-control" value="{!! old('history') ?? ($editable[0]->history ?? '') !!}" name="history" type="text" id="history">
+        @error('history')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="surgeriesList">Procedimientos Quirúrgicos</label>
+{{--        <input class="form-control" value="{!! old('surgeriesList') ?? ($editable[0]->surgeriesList ?? '') !!}" name="surgeriesList" type="text" id="surgeriesList">--}}
+        <textarea name="surgeriesList" id="surgeriesList" cols="80" rows="5" placeholder="Write me anything please!">{!! old('surgeriesList') ?? ($editable[0]->surgeriesList ?? '') !!}</textarea>
+        @error('surgeriesList')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+</div>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="surgeriesDetail">Detalle del Procedimiento</label>
+        <input class="form-control" value="{!! old('surgeriesDetail') ?? ($editable[0]->surgeriesDetail ?? '') !!}" name="surgeriesDetail" type="text" id="surgeriesDetail">
+        @error('surgeriesDetail')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+    <div class="col-sm-6">
+        <label for="surgeriesPosition">Posición Quirúrgica</label>
+        <input class="form-control" value="{!! old('surgeriesPosition') ?? ($editable[0]->surgeriesPosition ?? '') !!}" name="surgeriesPosition" type="text" id="surgeriesPosition">
+        @error('surgeriesPosition')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-4">
+        <label for="Interconsulta">Interconsulta</label>
+        <input class="form-control" value="{!! old('Interconsulta') ?? ($editable[0]->Interconsulta ?? '') !!}" name="Interconsulta" type="text" id="Interconsulta">
+        @error('surgeriesPosition')
+        <small class="text-danger">
+            {{ Interconsulta }}
+        </small>
+        @enderror
+    </div>
+    <div class="col-sm-4">
+        <label for="paseMatronaYN">Pase Matrona</label>
+        <select name="paseMatronaYN" id="paseMatronaYN" style="width: 100%">
+            <option value="{{ $editable[0]->paseMatronaYN }}" selected="selected">
+                @if($editable[0]->paseMatronaYN == 'Y') Si
+                @elseif($editable[0]->paseMatronaYN == 'N') No
+                @elseif($editable[0]->paseMatronaYN == NULL)
+                @endif
+            </option>
+            @if($editable[0]->paseMatronaYN == 'Y')
+                <option value='N'>No</option>
+                <option value=NULL></option>
+            @elseif($editable[0]->paseMatronaYN == 'N')
+                <option value='Y'>Si</option>
+                <option value=NULL></option>
+            @else
+                <option value='Y'>Si</option>
+                <option value='N'>No</option>
+{{--                <option value="N" @if(old('paseMatronaYN')=='N') selected="selected" @endif>No</option>--}}
+            @endif
+        </select>
+        @error('paseMatronaYN')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+    <div class="col-sm-4">
+        <label for="thromboticRiskBMA">Riesgo Tromboembólico</label>
+        <select name="thromboticRiskBMA" id="thromboticRiskBMA" style="width: 100%">
+            <option value="{{ $editable[0]->thromboticRiskBMA }}" selected="selected">
+                @if($editable[0]->thromboticRiskBMA == 'B') Bajo
+                @elseif($editable[0]->thromboticRiskBMA == 'M') Medio
+                @elseif($editable[0]->thromboticRiskBMA == 'A') Alto
+                @elseif($editable[0]->thromboticRiskBMA == NULL)
+                @endif
+            </option>
+            @if($editable[0]->thromboticRiskBMA == 'B')
+                <option value='M'>Medio</option>
+                <option value='A'>Alto</option>
+                <option value=NULL></option>
+            @elseif($editable[0]->thromboticRiskBMA == 'M')
+                <option value='B'>Bajo</option>
+                <option value='A'>Alto</option>
+                <option value=NULL></option>
+            @elseif($editable[0]->thromboticRiskBMA == 'A')
+                <option value='B'>Bajo</option>
+                <option value='M'>Medio</option>
+                <option value=NULL></option>
+            @else
+                <option value='B'>Bajo</option>
+                <option value='M'>Medio</option>
+                <option value='A'>Alto</option>
+            @endif
+        </select>
+        @error('thromboticRiskBMA')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label for="description">Justificación</label>
+        <input class="form-control" value="{!! old('description') ?? ($editable[0]->description ?? '') !!}" name="description" type="text" id="description">
+        @error('description')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-6">
+        <label for="supplies">Insumos</label>
+        <textarea name="supplies" id="supplies" cols="80" rows="5" placeholder="Write me anything please!">{!! old('supplies') ?? ($editable[0]->supplies ?? '') !!}</textarea>
+        @error('supplies')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label for="equipment">Equipamiento</label>
+        <input class="form-control" value="{!! old('equipment') ?? ($editable[0]->equipment ?? '') !!}" name="equipment" type="text" id="equipment">
+        @error('equipment')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-12">
+        <label for="consignaciones">Consignaciones</label>
+        <input class="form-control" value="{!! old('consignaciones') ?? ($editable[0]->consignaciones ?? '') !!}" name="consignaciones" type="text" id="consignaciones">
+        @error('consignaciones')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-4">
+        <label for="bloodProducts">Hemoderivados (Tipo-Cantidad)</label>
+        <input class="form-control" value="{!! old('bloodProducts') ?? ($editable[0]->bloodProducts ?? '') !!}" name="bloodProducts" type="text" id="bloodProducts">
+        @error('bloodProducts')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+    <div class="col-sm-4">
+        <label for="ambulatorioYN">Ambulatorio</label>
+        <select name="ambulatorioYN" id="ambulatorioYN" style="width: 100%">
+            <option value="{{ $editable[0]->ambulatorioYN }}" selected="selected">
+                @if($editable[0]->ambulatorioYN == 'Y') Si
+                @elseif($editable[0]->ambulatorioYN == 'N') No
+                @elseif($editable[0]->ambulatorioYN == NULL)
+                @endif
+            </option>
+            @if($editable[0]->ambulatorioYN == 'Y')
+                <option value='N'>No</option>
+                <option value=NULL></option>
+            @elseif($editable[0]->ambulatorioYN == 'N')
+                <option value='Y'>Si</option>
+                <option value=NULL></option>
+            @else
+                <option value='Y'>Si</option>
+                <option value='N'>No</option>
+            @endif
+        </select>
+        @error('ambulatorioYN')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+    <div class="col-sm-4">
+        <label for="diasHosp">Dias de Hosp (MQ-UTI-UCI-TOTAL)</label>
+        <input class="form-control" value="{!! old('diasHosp') ?? ($editable[0]->diasHosp ?? '') !!}" name="diasHosp" type="text" id="diasHosp">
+        @error('diasHosp')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+</div>
+<br>
+<div class="row">
     <div class="col-sm-4">
         <label for="email">Email</label>
         <input class="form-control" value="{!! old('email') ?? ($editable[0]->email ?? '') !!}" name="email" type="text" id="email">
@@ -173,20 +395,6 @@
     </div>
 </div>
 <br>
-<div class="row">
-    <div class="col-sm-12">
-        <label for="description">Detalle</label>
-    </div>
-    <div class="col-sm-12">
-        <textarea name="description" id="description" cols="80" rows="5" placeholder="Write me anything please!">{!! old('description') ?? ($editable[0]->description ?? '') !!}</textarea>
-        @error('description')
-        <br>
-        <small class="text-danger">
-            {{ $message }}
-        </small>
-        @enderror
-    </div>
-</div>
 
 <input type="hidden" id="pathway" name="pathway" value="receta">
 
