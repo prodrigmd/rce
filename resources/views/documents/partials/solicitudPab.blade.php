@@ -151,6 +151,18 @@
 <br>
 <div class="row">
     <div class="col-sm-4">
+        <label for="surgeryTime">Tiempo Quirúrgico</label>
+        <input class="form-control" value="{!! old('surgeryTime') ?? ($editable[0]->surgeryTime ?? '') !!}" name="surgeryTime" type="text" id="surgeryTime">
+        @error('surgeryTime')
+        <small class="text-danger">
+            {{ $message }}
+        </small>
+        @enderror
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-sm-4">
         <label for="email">Email</label>
         <input class="form-control" value="{!! old('email') ?? ($editable[0]->email ?? '') !!}" name="email" type="text" id="email">
         @error('email')

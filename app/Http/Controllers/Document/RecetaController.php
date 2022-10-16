@@ -12,6 +12,7 @@ use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Barryvdh\DomPDF\Facade\Pdf;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use function PHPUnit\Framework\isEmpty;
 use function PHPUnit\Framework\isNull;
 
 class RecetaController extends Controller
@@ -142,23 +143,24 @@ class RecetaController extends Controller
             unset($myArray[$x]);
             array_shift($myArray[$myTempArray2[0]]);
         }
-//        dd($myArray);
-//        dd(isset($myArray['date-m']));
-//        dd($myKeys);
-        foreach ($myKeys as $key=>$value){
-            if (isset($document[0]->$value)){
-                if (strpos($myArray[$value][0], '/XY:')) {
-                    $array = (comma_separated_to_array($myArray[$value][0], '/XY:'));
-//                    $lineHeight = intval(end($array));
-                    $arrayXY = (comma_separated_to_array(end($array), '|'));
-                    $tab = intval($arrayXY[0]);
-                    $lineHeight = intval($arrayXY[1]);
 
-                    $myArray[$value][0] = $document[0]->$value.'/XY:'.$tab.'|'.$lineHeight;
-                }
-                else {
-                    $myArray[$value][0] = $document[0]->$value;
-                }
+        $myArrayFiltered = [];
+        foreach ($document[0] as $key=>$value){
+            if (isset($myArray[$key][0])){
+                array_push($myArrayFiltered, $key);
+            }
+        }
+
+        foreach ($myArrayFiltered as $key=>$value) {
+            if (strpos($myArray[$value][0], '/XY:')) {
+                $array = (comma_separated_to_array($myArray[$value][0], '/XY:'));
+                $arrayXY = (comma_separated_to_array(end($array), '|'));
+                $tab = intval($arrayXY[0]);
+                $lineHeight = intval($arrayXY[1]);
+                $myArray[$value][0] = $document[0]->$value.'/XY:'.$tab.'|'.$lineHeight;
+            }
+            else {
+                $myArray[$value][0] = $document[0]->$value;
             }
         }
 
@@ -211,6 +213,25 @@ class RecetaController extends Controller
                 $myArray['anesthesist-YN'][0] = $arrayMarkTemp[1];
                 $myArray['anesthesist-YN'][1] = $myArray['anesthesist-YN'][1] + $arrayCoordTemp[0] ;
                 $myArray['anesthesist-YN'][2] = $myArray['anesthesist-YN'][2] + $arrayCoordTemp[1];
+            }
+        }
+
+        if (isset($myArray['arsenaleraName'])){
+            $myArray['arsenaleraName'][0] = $document[0]->arsenaleraName;
+            $myArray['arsenaleraRUT'][0] = $document[0]->arsenaleraRUT;
+        }
+
+        if (isset($myArray['arsenalera-YN'])) {
+            $arrayArsenaleraTemp = comma_separated_to_array($myArray['arsenalera-YN'][0], '/XY:');
+            $arrayMarkTemp = comma_separated_to_array($arrayArsenaleraTemp[0], '/t/');
+            $arrayCoordTemp = comma_separated_to_array($arrayArsenaleraTemp[1], '|');
+            if (isset($myArray['arsenaleraName'][0]) OR isset($myArray['arsenaleraRUT'][0])) {
+                $myArray['arsenalera-YN'][0] = $arrayMarkTemp[0];
+            }
+            else {
+                $myArray['arsenalera-YN'][0] = $arrayMarkTemp[1];
+                $myArray['arsenalera-YN'][1] = $myArray['arsenalera-YN'][1] + $arrayCoordTemp[0] ;
+                $myArray['arsenalera-YN'][2] = $myArray['arsenalera-YN'][2] + $arrayCoordTemp[1];
             }
         }
 
