@@ -128,10 +128,6 @@ class RecetaController extends Controller
             return $val;
         }
 
-//        $myArray = comma_separated_to_array($subtype[0]->imagexy, ',');
-//        $size = $myArray[count($myArray)-2];
-//        $angle = $myArray[count($myArray)-1];
-
         $myTempArray = (comma_separated_to_array($subtype[0]->imagexy, ';'));
 
         $myArray = array_fill(0,count($myTempArray),'');
@@ -147,6 +143,8 @@ class RecetaController extends Controller
             array_shift($myArray[$myTempArray2[0]]);
         }
 //        dd($myArray);
+//        dd(isset($myArray['date-m']));
+//        dd($myKeys);
         foreach ($myKeys as $key=>$value){
             if (isset($document[0]->$value)){
                 if (strpos($myArray[$value][0], '/XY:')) {
@@ -161,31 +159,58 @@ class RecetaController extends Controller
                 else {
                     $myArray[$value][0] = $document[0]->$value;
                 }
-
             }
-            elseif (isset($myArray['date-d'])){
+        }
+
+        if (isset($myArray['date-d'])){
                 $myArray['date-d'][0] = Carbon::parse($document[0]->date)->format('d');
             }
-            elseif (isset($myArray['date-m'])){
+        if (isset($myArray['date-m'])){
                 $myArray['date-m'][0] = Carbon::parse($document[0]->date)->format('m');
             }
-            elseif (isset($myArray['date-Y'])){
+        if (isset($myArray['date-Y'])){
                 $myArray['date-Y'][0] = Carbon::parse($document[0]->date)->format('Y');
             }
-            elseif (isset($myArray['date-d-m-Y'])){
+        if (isset($myArray['date-d-m-Y'])){
                 $myArray['date-d-m-Y'][0] = Carbon::parse($document[0]->date)->format('d-m-Y');
             }
-            elseif (isset($myArray['date-H:i'])){
+        if (isset($myArray['date-H:i'])){
                 $myArray['date-H:i'][0] = Carbon::parse($document[0]->date)->format('H:i');
             }
-            elseif (isset($myArray['dateSurgery-d-m-Y'])){
-                $myArray['dateSurgery-d-m-Y'][0] = Carbon::parse($document[0]->dateSurgery)->format('Y');
+        if (isset($myArray['dateSurgery-d-m-Y'])){
+                $myArray['dateSurgery-d-m-Y'][0] = Carbon::parse($document[0]->dateSurgery)->format('d-m-Y');
             }
-            elseif (isset($myArray['dateSurgery-H:i'])){
+        if (isset($myArray['dateSurgery-H:i'])){
                 $myArray['dateSurgery-H:i'][0] = Carbon::parse($document[0]->dateSurgery)->format('H:i');
             }
-            elseif (isset($myArray['surgeonName-1'])){
-                $myArray['surgeonName-1'][0] = rtrim($document[0]->surgeonName, '/');
+
+        if (isset($myArray['surgeonName'])) {
+            $arraySurgeonsTemp = comma_separated_to_array($myArray['surgeonName'][0], '/XY:');
+            array_pop($arraySurgeonsTemp);
+            $arraySurgeons = comma_separated_to_array($arraySurgeonsTemp[0], '/t/');
+            for ($i = 0; $i < count($arraySurgeons); $i++) {
+                if (isset($myArray['surgeonName-' . ($i + 1)])) {
+                    $myArray['surgeonName-1' . ($i + 1)][0] = $arraySurgeons[$i];
+                }
+            }
+        }
+
+        if (isset($myArray['anesthesiaName'])){
+            $myArray['anesthesiaName'][0] = $document[0]->anesthesiaName;
+            $myArray['anesthesiaRUT'][0] = $document[0]->anesthesiaRUT;
+        }
+
+        if (isset($myArray['anesthesist-YN'])) {
+            $arrayAnesthesistTemp = comma_separated_to_array($myArray['anesthesist-YN'][0], '/XY:');
+            $arrayMarkTemp = comma_separated_to_array($arrayAnesthesistTemp[0], '/t/');
+            $arrayCoordTemp = comma_separated_to_array($arrayAnesthesistTemp[1], '|');
+            if (isset($myArray['anesthesiaName'][0]) OR isset($myArray['anesthesiaRUT'][0])) {
+                $myArray['anesthesist-YN'][0] = $arrayMarkTemp[0];
+            }
+            else {
+                $myArray['anesthesist-YN'][0] = $arrayMarkTemp[1];
+                $myArray['anesthesist-YN'][1] = $myArray['anesthesist-YN'][1] + $arrayCoordTemp[0] ;
+                $myArray['anesthesist-YN'][2] = $myArray['anesthesist-YN'][2] + $arrayCoordTemp[1];
             }
         }
 

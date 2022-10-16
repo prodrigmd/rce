@@ -43,21 +43,6 @@
                                 la diferencia de coordenadas entre textos. <br>
                                 Ej: [surgeriesPosition],Posicion Linea 1/t/Posicion Linea 2/XY:0|90,3400,2480;<br>
 
-                                Si el texto corresponde a varias líneas, estas se separan con el uso de /n/ entre líneas y se usa /N:
-                                al final para indicar de cuanto es el espacio entre las líneas. <br>
-                                Ej: [surgeriesPosition],Posicion Linea 1/n/Posicion Linea 2/N:90,3400,2480;<br>
-
-                                Si el texto corresponde a diferentes textos en el mismo plano horizontal, estas se separan
-                                con el uso de /tab/ entre líneas y se usa /TAB:
-                                al final para indicar de cuanto es el espacio entre caracteres. <br>
-                                Ej: [diasHosp],3/tab/2/tab/1/tab/6/TAB:500,2635,5080;<br>
-
-                                Para separacion multidimensional usar /tabn/, /TABN: x|y. <br>
-                                Ej: [justification],Justificación 1/tabn/Justificación 2/TABN:-1360|220,2460,2690;<br>
-
-                                Para series opcionales se usa /op/ con /NOP: si es orientación vertical y /TABOP: si la orientación
-                                es horizontal <br>
-
                                 <b>Nombre de grupos disponibles: </b>[patientName], [patientAge], [patientRUT],
                                 [patientAddress], [patientCity], [date], [description], [email],
                                 [surgeonName], [surgeonRUT], [surgeonSpecialty], [anesthesiaName], [arsenaleraName],
@@ -65,7 +50,8 @@
                                 [surgeriesPosition], [thromboticRisk], [paseMatronaYN], [justification], [supplies],
                                 [equipment], [consignaciones], [ambulatorioYN], [diasHosp], [delayRiskYN]. <br>
                                 <b>Grupos derivados: </b> [date-d], [date-m], [date-Y], [date-d-m-Y], [date-H:i],
-                                [dateSurgery-d-m-Y], [dateSurgery-H:i], [surgeonName-1]. <br>
+                                [dateSurgery-d-m-Y], [dateSurgery-H:i], [surgeonName-1], [anesthesist-YN],
+                                [arsenalera-YN]<br>
                                 <b>Grupos de configuración: </b> [qrcode], [sizeAngleColor] (color habitual: #132683).
                             </p>
 {{--                            <textarea name="imagexy_description" id="imagexy_description" cols="100" rows="5">{{ old('imagexy_description') ?? $editable[0]->imagexy_description }}</textarea>--}}

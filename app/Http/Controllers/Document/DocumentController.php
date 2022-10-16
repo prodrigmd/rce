@@ -294,29 +294,49 @@ class DocumentController extends Controller
             'patientRUT' => 'required',
             'patientAddress' => 'nullable',
             'patientCity' => 'nullable',
+            'surgeonName' => 'nullable',
+            'surgeonRUT' => 'nullable',
+            'surgeonSpecialty' => 'nullable',
             'date' => 'required',
+            'dateSurgery' => 'nullable',
+            'anesthesiaName' => 'nullable',
+            'anesthesiaRUT' => 'nullable',
+            'arsenaleraName' => 'nullable',
+            'arsenaleraRUT' => 'nullable',
             'email' => 'nullable',
             'description' => 'nullable',
-//            'documents_type_id' => 'required',
-            'documents_type_subtype_id' => 'required',
+            'documents_type_subtype_id' => 'nullable',
         ]);
+
+//        dd($validatedData['patientName']);
 
         $date_modified =
             $validatedData['date'] == null ? $validatedData['date'] :
                 Carbon::parse($validatedData['date'])->format('Y-m-d H:i:s');
 
+        if (isset($validatedData['dateSurgery'])) {
+            $dateSurgery_modified = Carbon::parse($validatedData['dateSurgery'])->format('Y-m-d H:i:s');
+        }
+
         $values = array(
             'patientName' => $validatedData['patientName'],
             'patientAge' => $validatedData['patientAge'],
             'patientRUT' => $validatedData['patientRUT'],
-            'patientAddress' => $validatedData['patientAddress'],
-            'patientCity' => $validatedData['patientCity'],
-            'date' => $date_modified,
-            'email' => $validatedData['email'],
-            'description' => $validatedData['description'],
-//            'documents_type_id' => $validatedData['documents_type_id'],
-            'documents_type_subtype_id' => $validatedData['documents_type_subtype_id'],
-            'updated_at' => Carbon::now()->toDateTimeString()
+            'patientAddress' => $validatedData['patientAddress'] ?? null,
+            'patientCity' => $validatedData['patientCity'] ?? null,
+            'surgeonName' => $validatedData['surgeonName'] ?? null,
+            'surgeonRUT' => $validatedData['surgeonRUT'] ?? null,
+            'surgeonSpecialty' => $validatedData['surgeonSpecialty'] ?? null,
+            'date' => $date_modified ?? null,
+            'dateSurgery' => $dateSurgery_modified ?? null,
+            'anesthesiaName' => $validatedData['anesthesiaName'] ?? null,
+            'anesthesiaRUT' => $validatedData['anesthesiaRUT'] ?? null,
+            'arsenaleraName' => $validatedData['arsenaleraName'] ?? null,
+            'arsenaleraRUT' => $validatedData['arsenaleraRUT'] ?? null,
+            'email' => $validatedData['email'] ?? null,
+            'description' => $validatedData['description'] ?? null,
+            'documents_type_subtype_id' => $validatedData['documents_type_subtype_id'] ?? null,
+            'updated_at' => Carbon::now()->toDateTimeString() ?? null
         );
 
         DB::table('documents')
